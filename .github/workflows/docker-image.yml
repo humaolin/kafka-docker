@@ -40,6 +40,6 @@ jobs:
       with:
         push: true
         file: ./Dockerfile
-        tags: humaolin/kafka:2.13-2.8.1
+        tags: humaolin/kafka:2.13-3.2.0
 # docker build . --file Dockerfile --tag kafka:2.13-2.8.1  --platform=linux/amd64,linux/arm/v7,linux/arm64  \
 #         --output "type=image,push=true" \
