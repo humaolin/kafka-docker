@@ -15,6 +15,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v3
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
 #     - name: Login docker hub
 #       env:
 #         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
