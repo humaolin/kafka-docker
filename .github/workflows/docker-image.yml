@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3
     - name: Login docker hub
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
@@ -20,13 +21,11 @@ jobs:
       # 指定login命令登录hub.docker.com，帐号和密码已经在GitHub网页中配置好了
       run: |
         echo "${DOCKER_PASSWORD}" | docker login --username ${DOCKER_USERNAME} --password-stdin
-    
     - name: Set up Docker Buildx
       # 使用buildx来构建镜像，这个工具功能很丰富
       uses: crazy-max/ghaction-docker-buildx@v1
       with:
-        buildx-version: latest
-    - uses: actions/checkout@v3
+        buildx-version: latest    
     - name: Build the Docker image
       run: docker buildx build \
         --platform=linux/amd64,linux/arm/v7,linux/arm64 \
