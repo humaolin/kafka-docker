@@ -43,5 +43,7 @@ jobs:
         push: true
         file: ./Dockerfile
         tags: humaolin/kafka:2.13-3.2.0
+    - name: Available platforms
+      run: echo ${{ steps.buildx.outputs.platforms }} 
 # docker build . --file Dockerfile --tag kafka:2.13-2.8.1  --platform=linux/amd64,linux/arm64/v8  \
 #         --output "type=image,push=true" \
