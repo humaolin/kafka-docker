@@ -36,7 +36,7 @@ jobs:
       with:
           install: true 
     - name: Build the Docker image
-      run:  docker buildx build  --platform=linux/amd64,linux/arm64 . --file Dockerfile --tag humaolin/kafka:2.13-3.2.0
+      run:  docker buildx build  --platform=linux/amd64,linux/arm/v7,linux/arm64 . --file Dockerfile --tag humaolin/kafka:2.13-3.2.0
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
