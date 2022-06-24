@@ -21,8 +21,7 @@ ENV PATH=${PATH}:${KAFKA_HOME}/bin
 
 COPY download-kafka.sh start-kafka.sh broker-list.sh create-topics.sh versions.sh /tmp2/
 
-RUN set -eux ; \
-    apt-get update ; \
+RUN apt-get update ; \
     apt-get upgrade -y ; \
     apt-get install -y --no-install-recommends jq net-tools curl wget vim openjdk-11-jre; \
 ### BEGIN docker for CI tests
