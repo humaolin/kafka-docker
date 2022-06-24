@@ -34,7 +34,7 @@ jobs:
       with:
           install: true 
     - name: Build the Docker image
-      run:  docker build . --file Dockerfile --tag humaolin/kafka:2.13-2.8.1 
+      run:  docker buildx build . --file Dockerfile --tag humaolin/kafka:2.13-2.8.1 
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
