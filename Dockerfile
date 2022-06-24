@@ -1,4 +1,4 @@
-FROM openjdk:11-jre-slim
+FROM ubuntu:20.04
 
 ARG kafka_version=3.2.0
 ARG scala_version=2.13
@@ -11,8 +11,7 @@ LABEL org.label-schema.name="kafka" \
       org.label-schema.vcs-url="https://github.com/wurstmeister/kafka-docker" \
       org.label-schema.vcs-ref="${vcs_ref}" \
       org.label-schema.version="${scala_version}_${kafka_version}" \
-      org.label-schema.schema-version="1.0" \
-      maintainer="wurstmeister"
+      org.label-schema.schema-version="1.0"
 
 ENV KAFKA_VERSION=$kafka_version \
     SCALA_VERSION=$scala_version \
@@ -25,7 +24,7 @@ COPY download-kafka.sh start-kafka.sh broker-list.sh create-topics.sh versions.s
 RUN set -eux ; \
     apt-get update ; \
     apt-get upgrade -y ; \
-    apt-get install -y --no-install-recommends jq net-tools curl wget vim; \
+    apt-get install -y --no-install-recommends jq net-tools curl wget vim openjdk-11-jre; \
 ### BEGIN docker for CI tests
     apt-get install -y --no-install-recommends gnupg lsb-release ; \
 	curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg ; \
