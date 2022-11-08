@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master","3.3.1"]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master","3.3.1" ]
 
 jobs:
 
@@ -45,5 +45,5 @@ jobs:
         tags: humaolin/kafka:2.13-3.3.1
     - name: Available platforms
       run: echo ${{ steps.buildx.outputs.platforms }} 
-# docker build . --file Dockerfile --tag kafka:2.13-2.8.1  --platform=linux/amd64,linux/arm64/v8  \
+# docker build . --file Dockerfile --tag kafka:2.13-3.3.1  --platform=linux/amd64,linux/arm64/v8  \
 #         --output "type=image,push=true" \
